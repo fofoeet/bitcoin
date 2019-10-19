@@ -47,26 +47,47 @@ $) tar -xvzf bitcoin-0.18.1-x86_64-linux-gnu.tar.gz
 ```
 $) sudo install -m 0755 -o root -g root -t /usr/local/bin bitcoin-0.18.1/bin/*
 ```
+<br>
 
-### 4.5 비트코인 실행파일 살펴보기
-- bitcoin-qt :  크로스 플랫폼 애플리케이션 / GUI Interface 무료 툴킷<br>
+### 4.5 비트코인 실행하기
+#### - bitcoin-qt 또는 bitcoind를 이용해 비트코인 네트워크를 구동
+
+
+#### 4.5.1 bitcoin-qt :  크로스 플랫폼 애플리케이션 / GUI Interface 무료 툴킷<br>
 ```
 $)./bitcoin-qt
 ```
 
-- bitcoind : 비트코인 데몬 실행해보기(mainNet)
+#### 4.5.2 bitcoind : 개발자 및 운영자를 위한 블록체인 네트워크
+- bitcoin 서비스 켜기(운영망)
 ```
 $) bitcoind -daemon
 ```
 
-- bitcoin 서비스 확인하기
+- bitcoin 서비스 확인
 ```
 $) ps -ef | grep bitcoin
 $) netstat -anp | grep 8332
 $) watch -n 1 du .bitcoin
 ```
 
+- bitcoin 서비스 중지
+```
+$) bitcoin-cli stop
+```
+<br><br>
 
+#### 잠깐! 비트코인은 어디에 연결되어 블록을 받아오는 것일까?
+https://github.com/bitcoin/bitcoin/blob/4b51ed89cfce9870a20d75001fae3b68ac1dfd86/src/chainparams.cpp
+
+1. Seed 서버가 랜덤으로 Node IP(Public) 제공(IP가 변경되는 주기는 몇초 이상) 
+$) dig seed.bitcoinstats.com +short
+
+2. 오프라인일 경우 캐쉬
+
+
+#### 비트코인 노드의 위치를 확인하기
+https://bitnodes.earn.com/#join-the-network
 
 
 
